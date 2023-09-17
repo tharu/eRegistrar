@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main-layout}">
+<head>
+<meta charset="UTF-8">
+<link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.2/cerulean/bootstrap.min.css" rel="stylesheet" integrity="sha384-EmRcsPP774S9MOi4ywB+JXUWjYnBdyInMzG2XsC5siZEUpexqxOMJW358dCYEjPu" crossorigin="anonymous">
+<title>Edit Student</title>
+</head>
+<body>
+	<div class ="container" layout:fragment="content">
+    <div style="border-style:solid;width:70%;padding-left:1%;padding-bottom:1%">
+        <h1 >Edit Student</h1>
+        <form
+            role="form"
+            method="post"
+            th:action="@{../edit/{id}(id=${student.studentId})}"
+            th:object="${student}"           
+        >
+         	<label style="width:50%;">Student Number:</label>
+            <input  style="width:40%;" type="number" th:field = "*{studentNumber}" />
+            <br />
+            <label style="width:50%;">First name:</label>
+            <input  style="width:40%;" type="text" th:field = "*{firstName}" />
+            <br />
+            <label style="width:50%;">Middle Name:</label>
+            <input type="text" style="width:40%;" th:field = "*{middleName}" />
+            <br />
+            <label style="width:50%;">Last Name:</label>
+            <input type="text" style="width:40%;" th:field="*{lastName}" />
+            <br />
+            <label style="width:50%;">Date of Enrollment:</label>
+            <input type="date" th:field="*{dateOfEnrollment}" />
+            <br />
+            <label style="width:50%;">Cumulative GPA:</label>
+       		<input type="number" th:field="*{cgpa}" />
+            <br />
+          
+            <br />
+            <button type="submit" >Save Changes</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

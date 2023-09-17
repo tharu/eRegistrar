@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main-layout}">
+<head>
+<meta charset="UTF-8">
+<link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.2/cerulean/bootstrap.min.css" rel="stylesheet" integrity="sha384-EmRcsPP774S9MOi4ywB+JXUWjYnBdyInMzG2XsC5siZEUpexqxOMJW358dCYEjPu" crossorigin="anonymous">
+<title>eRegistrar - Students</title>
+</head>
+<body>
+<div class="container" layout:fragment="content">
+<h2>Students</h2>
+<a href="./add" style="float:right">Add New Student</a>
+<div>
+	<table class="table table-striped">
+	<thead>
+	<tr>
+		<th scope="col">#</th>
+		<th scope="col">Student Number</th>
+		<th scope="col">First Name</th>
+		<th scope="col">Middle Name</th>
+		<th scope="col">Last Name</th>
+		<th scope="col">Date of Enrollment</th>
+		<th scope="col">Cumulative GPA</th>
+	</tr>	
+	</thead>
+	<tbody>
+		<tr th:each="student,index: ${students}">
+			<th scope="row" th:text="${index.count}"></th>	
+			<td scope="row" th:text="${student.studentNumber}"></td>
+			<td scope="row" th:text="${student.firstName}"></td>
+			<td scope="row" th:text="${student.middleName}"></td>
+			<td scope="row" th:text="${student.lastName}"></td>
+			<td scope="row" th:text="${student.dateOfEnrollment}"></td>
+			<td scope="row" th:text="${student.cgpa}"></td>
+			<td>
+                    <a th:href="@{/edit/{id}(id=${student.studentId})}">Edit</a> |
+                    <a th:href="@{/delete/{id}(id=${student.studentId})}">Delete</a>
+            </td>
+		</tr>
+		<tr th:if="${students.size()}<1">
+		   <td colSpan="7" style="text-align:center"> No Students registered.</td>
+		</tr>
+	</tbody>
+	
+	</table>
+</div>
+</div>
+</body>
+</html>
